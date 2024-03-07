@@ -228,6 +228,32 @@ public class MySinglyLL {
         size = 0;
     }
 
+    public void merge(MySinglyLL list) {
+        if (isEmpty()) {
+            head = list.head;
+            return;
+        }
+
+        Node current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+
+        current.next = list.head;
+        size += list.size();
+    }
+
+    public void split(int index) {
+        if (isEmpty()) {
+            return;
+        }
+
+        while (index-- >= 0) {
+            head = head.next;
+            size--;
+        }
+    }
+
     // BONUS FOR CIRCULAR LINKED LISTS
     public int getIndexFromCircularLL(Node node) {
         if (isEmpty()) {
