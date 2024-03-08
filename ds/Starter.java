@@ -2,6 +2,10 @@ package ds;
 
 import ds.LinkedList.MyDoublyLL;
 import ds.LinkedList.MySinglyLL;
+import ds.Queue.MyQueue;
+import ds.Stack.MyStack;
+
+import java.util.Arrays;
 
 public class Starter {
     public static void main(String[] args) {
@@ -9,9 +13,87 @@ public class Starter {
 //        initializeSinglyLL();
 //        System.out.println("\n------Finished initializing Singly Linked list..");
 
-        System.out.println("------Initializing Doubly Linked list..\n");
-        initializeDoublyLL();
-        System.out.println("\n------Finished initializing Doubly Linked list..");
+//        System.out.println("------Initializing Doubly Linked list..\n");
+//        initializeDoublyLL();
+//        System.out.println("\n------Finished initializing Doubly Linked list..");
+
+//        System.out.println("------Initializing Stack..\n");
+//        initializeStack();
+//        System.out.println("\n------Finished initializing Stack..");
+
+        System.out.println("------Initializing Queue..\n");
+        initializeQueue();
+        System.out.println("\n------Finished initializing Queue..");
+    }
+
+    private static void initializeQueue() {
+        MyQueue queue = new MyQueue();
+
+        int[] nums = {10, 5, 3, 2, 15, 7};
+        System.out.println("Populating queue..");
+        for (int num : nums) {
+            System.out.printf("Added num %d to the queue\n", num);
+            queue.enqueue(num);
+        }
+
+        System.out.println("\nConvert queue to array: " + Arrays.toString(queue.toArray()));
+
+        System.out.println("\nDequeued Node: " + queue.dequeue());
+
+        System.out.println("\nConvert queue to array: " + Arrays.toString(queue.toArray()));
+
+        System.out.println("\nPeek Node: " + queue.peek());
+
+        System.out.println("\nDoes queue contain value 2? " + queue.contains(2));
+
+        System.out.println("\nDoes queue contain value 99? " + queue.contains(99));
+
+        int[] nums2 = {99, 111, 222};
+        System.out.println("\nPopulating queue with a list of values..");
+        queue.addAll(nums2);
+
+        System.out.println("\nConvert queue to array: " + Arrays.toString(queue.toArray()));
+
+        System.out.println("\nRemoved Node(2) from queue: " + queue.remove(2));
+
+        System.out.println("\nConvert queue to array: " + Arrays.toString(queue.toArray()));
+        System.out.println("\nCheck new tail: " + queue.checkTail());
+    }
+
+    private static void initializeStack() {
+        MyStack stack = new MyStack();
+
+        int[] nums = {10, 5, 3, 2, 15, 7};
+        System.out.println("Populating stack..");
+        for (int num : nums) {
+            System.out.printf("Added num %d to the stack\n", num);
+            stack.push(num);
+        }
+
+        System.out.println("\nPopping node: " + stack.pop());
+        System.out.println("\nPeek node: " + stack.peek());
+        System.out.println("\nSearching node(2) index: " + stack.search(new MyStack.Node(3)));
+
+        System.out.println("\nConvert stack to array: " + Arrays.toString(stack.toArray()));
+
+        int[] arr = {9, 8, 7};
+        System.out.println("\nPush new list to stack {9, 8, 7}:");
+        stack.pushAll(arr);
+        System.out.println("\nConvert stack to array: " + Arrays.toString(stack.toArray()));
+
+        System.out.println("\nPop until Node(15):");
+        stack.popUntil(new MyStack.Node(8));
+        System.out.println("\nConvert stack to array: " + Arrays.toString(stack.toArray()));
+
+        System.out.println("\nPush if absent 999:");
+        stack.pushIfAbsent(999);
+
+        System.out.println("\nConvert stack to array: " + Arrays.toString(stack.toArray()));
+
+        System.out.println("\nReverse stack");
+        stack.reverse();
+
+        System.out.println("\nConvert stack to array: " + Arrays.toString(stack.toArray()));
     }
 
     private static void initializeDoublyLL() {
