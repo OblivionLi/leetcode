@@ -1,5 +1,6 @@
 package ds;
 
+import ds.ArrayList.MyArrayList;
 import ds.LinkedList.MyDoublyLL;
 import ds.LinkedList.MySinglyLL;
 import ds.Queue.MyQueue;
@@ -21,9 +22,68 @@ public class Starter {
 //        initializeStack();
 //        System.out.println("\n------Finished initializing Stack..");
 
-        System.out.println("------Initializing Queue..\n");
-        initializeQueue();
-        System.out.println("\n------Finished initializing Queue..");
+//        System.out.println("------Initializing Queue..\n");
+//        initializeQueue();
+//        System.out.println("\n------Finished initializing Queue..");
+
+        System.out.println("------Initializing ArrayList..\n");
+        initializeArrayList();
+        System.out.println("\n------Finished initializing ArrayList..");
+    }
+
+    private static void initializeArrayList() {
+        MyArrayList arr = new MyArrayList();
+
+        System.out.println("Adding values {2, 5, 6, 1, 0, 10}");
+        int[] values = {2, 5, 6, 1, 0, 10};
+        for (int num : values) {
+            arr.add(num);
+        }
+
+        System.out.println(arr);
+
+        arr.set(5, 999);
+
+        System.out.println(arr);
+
+        System.out.println("\nGet value at index 2: " + arr.get(5));
+
+        System.out.println("\nAdd new value 777 at index 2");
+        arr.add(2, 777);
+        System.out.println(arr);
+
+        System.out.println("Add new value 666 at index 5");
+        arr.add(5, 666);
+        System.out.println(arr);
+
+        System.out.println("Add new value 333 at index 1");
+        arr.add(1, 333);
+        System.out.println(arr);
+
+        System.out.println("\nRemoved element at index 1: " + arr.remove(1));
+        System.out.println(arr);
+
+        System.out.println("\nContains element 666? " + arr.contains(666));
+        System.out.println("\nContains element 123? " + arr.contains(123));
+        System.out.println("\nIndex of 6: " + arr.indexOf(6));
+
+        System.out.println("\nAdd new value 5");
+        arr.add(5);
+
+        System.out.println(arr);
+
+        System.out.println("\nCheck last occurred element 5 index: " + arr.lastIndexOf(5));
+
+        System.out.println("\nTo array: " + Arrays.toString(arr.toArray()));
+
+        int[] newList = {6, 4, 21, 11};
+        arr.addAll(newList);
+        System.out.println(Arrays.toString(arr.toArray()));
+
+        System.out.println("\nReverse array: " + Arrays.toString(arr.reverseArray()));
+
+        System.out.println("\nTo array: " + Arrays.toString(arr.toArray()));
+        System.out.println("\nSort array: " + Arrays.toString(arr.sortArray()));
     }
 
     private static void initializeQueue() {
