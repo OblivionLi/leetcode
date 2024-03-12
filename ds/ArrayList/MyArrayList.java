@@ -204,4 +204,27 @@ public class MyArrayList {
 
         return sortedArray;
     }
+
+    public int binarySearch(int[] elements, int elementToFind) {
+        if (elements.length == 0) {
+            return Integer.MIN_VALUE;
+        }
+
+        int leftIdx = 0;
+        int rightIdx = elements.length - 1;
+
+        while (leftIdx < rightIdx) {
+            int midIdx = leftIdx + (rightIdx - leftIdx) / 2;
+
+            if (elementToFind == elements[midIdx]) {
+                return midIdx;
+            } else if (elementToFind < elements[midIdx]) {
+                rightIdx = midIdx - 1;
+            } else {
+                leftIdx = midIdx + 1;
+            }
+        }
+
+        return Integer.MIN_VALUE;
+    }
 }

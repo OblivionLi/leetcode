@@ -3,8 +3,10 @@ package ds;
 import ds.ArrayList.MyArrayList;
 import ds.LinkedList.MyDoublyLL;
 import ds.LinkedList.MySinglyLL;
+import ds.MyHT.MyHT;
 import ds.Queue.MyQueue;
 import ds.Stack.MyStack;
+import ds.Tree.MyBinarySearchTree;
 
 import java.util.Arrays;
 
@@ -26,9 +28,69 @@ public class Starter {
 //        initializeQueue();
 //        System.out.println("\n------Finished initializing Queue..");
 
-        System.out.println("------Initializing ArrayList..\n");
-        initializeArrayList();
-        System.out.println("\n------Finished initializing ArrayList..");
+//        System.out.println("------Initializing ArrayList..\n");
+//        initializeArrayList();
+//        System.out.println("\n------Finished initializing ArrayList..");
+        
+//        System.out.println("------Initializing HashTable..\n");
+//        initializeHashTable();
+//        System.out.println("\n------Finished initializing HashTable..");
+
+        System.out.println("------Initializing BST..\n");
+        initializeBST();
+        System.out.println("\n------Finished initializing BST..");
+    }
+
+    private static void initializeBST() {
+        MyBinarySearchTree bst = new MyBinarySearchTree();
+        bst.insert(10);
+        bst.insert(5);
+        bst.insert(3);
+        bst.insert(8);
+        bst.insert(15);
+        bst.insert(12);
+        bst.insert(18);
+
+        bst.display();
+
+        System.out.println("\nGet min value of tree: " + bst.getMinValue());
+        System.out.println("Get max value of tree: " + bst.getMaxValue());
+        System.out.println("\nDoes Node(3) exist in tree? " + bst.search(3));
+        System.out.println("\nDoes Node(100) exist in tree? " + bst.search(100));
+        System.out.println("\nDeleted Node(5)");
+        bst.delete(5);
+
+        bst.display();
+    }
+
+    private static void initializeHashTable() {
+        MyHT<Integer, Integer> myHT = new MyHT<Integer, Integer>(10);
+
+        System.out.println("\nAdding keys and values: ");
+        myHT.put(3, 333);
+        myHT.put(1, 111);
+        myHT.put(2, 222);
+        myHT.put(1, 1111);
+
+        System.out.println("\nGet index 1 values: " + myHT.get(1));
+        System.out.println("Get index 2 values: " + myHT.get(2));
+        System.out.println("Remove index 1 value: " + myHT.remove(1));
+        System.out.println("Get index 1 values: " + myHT.get(1));
+        System.out.println("\nContains key 2? "+ myHT.containsKey(2));
+        System.out.println("Contains key 9? "+ myHT.containsKey(9));
+        System.out.println("\nContains value 222? " + myHT.containsValue(222));
+        System.out.println("Contains value 9999? " + myHT.containsValue(9999));
+
+        System.out.println("\nGet all distinct keys: " + myHT.keys());
+        System.out.println("Get all values: " + myHT.values());
+
+        System.out.println("\nCheck size: " + myHT.size());
+        System.out.println("Check if empty: " + myHT.isEmpty());
+
+        System.out.println("\nDisplay table: " + myHT.displayHT());
+        System.out.println("\nClear table: ");
+        myHT.clear();
+        System.out.println("\nDisplay table: " + myHT.displayHT());
     }
 
     private static void initializeArrayList() {
@@ -84,6 +146,10 @@ public class Starter {
 
         System.out.println("\nTo array: " + Arrays.toString(arr.toArray()));
         System.out.println("\nSort array: " + Arrays.toString(arr.sortArray()));
+        System.out.println("\nIndex of element 6 (binary search) searched: " + arr.binarySearch(arr.sortArray(), 6));
+        System.out.println("Index of element 2 (binary search) searched: " + arr.binarySearch(arr.sortArray(), 2));
+        System.out.println("Index of element 777 (binary search) searched: " + arr.binarySearch(arr.sortArray(), 777));
+        System.out.println("Index of element 12345 (binary search) searched: " + arr.binarySearch(arr.sortArray(), 12345));
     }
 
     private static void initializeQueue() {
