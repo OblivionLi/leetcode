@@ -1,5 +1,8 @@
 package ds.Tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MyBinarySearchTree {
     int size;
     Node root;
@@ -163,7 +166,70 @@ public class MyBinarySearchTree {
         return maxValue;
     }
 
-    // TODO:: implement preorder, inorder, postorder methods | dfs, bfs
+    public void traverseOrder(String order) {
+        switch (order) {
+            // ~ start of DFS algos
+            case "preorder" -> traversePreOrder(root);
+            case "inorder" -> traverseInOrder(root);
+            case "postorder" -> traversePostOrder(root);
+            // ~ end of DFS algos
+
+            case "bfs" -> traverseBFS(root);
+        }
+    }
+
+    private void traverseBFS(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<Node> nodes = new LinkedList<>();
+        nodes.add(root);
+
+        while (!nodes.isEmpty()) {
+            Node node = nodes.remove();
+
+            System.out.print(node.value + " ");
+
+            if (node.left != null) {
+                nodes.add(node.left);
+            }
+
+            if (node.right != null) {
+                nodes.add(node.right);
+            }
+        }
+    }
+
+    private void traverseInOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        traverseInOrder(root.left);
+        System.out.print(root.value + " ");
+        traverseInOrder(root.right);
+    }
+
+    private void traversePostOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        traversePostOrder(root.left);
+        traversePostOrder(root.right);
+        System.out.print(root.value + " ");
+    }
+
+    private void traversePreOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+
+        System.out.print(root.value + " ");
+        traversePreOrder(root.left);
+        traversePreOrder(root.right);
+    }
 
     static class Node {
         Node left;

@@ -6,6 +6,7 @@ import ds.LinkedList.MySinglyLL;
 import ds.MyHT.MyHT;
 import ds.Queue.MyQueue;
 import ds.Stack.MyStack;
+import ds.Tree.MyAVLTree;
 import ds.Tree.MyBinarySearchTree;
 
 import java.util.Arrays;
@@ -36,9 +37,36 @@ public class Starter {
 //        initializeHashTable();
 //        System.out.println("\n------Finished initializing HashTable..");
 
-        System.out.println("------Initializing BST..\n");
-        initializeBST();
-        System.out.println("\n------Finished initializing BST..");
+//        System.out.println("------Initializing BST..\n");
+//        initializeBST();
+//        System.out.println("\n------Finished initializing BST..");
+
+        System.out.println("------Initializing AVLTree..\n");
+        initializeAVLTree();
+        System.out.println("\n------Finished initializing AVLTree..");
+    }
+
+    private static void initializeAVLTree() {
+        MyAVLTree avl = new MyAVLTree();
+        avl.insert(20);
+        avl.insert(10);
+        avl.insert(35);
+        avl.insert(5);
+        avl.insert(15);
+        avl.insert(30);
+        avl.insert(40);
+        avl.insert(25);
+
+        System.out.println("\nTraverse preorder");
+        avl.traverseOrder("preorder");
+
+        System.out.println("\n\nCheck if contains 35: " + avl.contains(35));
+
+        System.out.println("\nDelete key: 35");
+        avl.delete(35);
+
+        System.out.println("\nTraverse preorder");
+        avl.traverseOrder("preorder");
     }
 
     private static void initializeBST() {
@@ -61,6 +89,18 @@ public class Starter {
         bst.delete(5);
 
         bst.display();
+
+        System.out.println("\n\nTraverse preorder");
+        bst.traverseOrder("preorder");
+
+        System.out.println("\n\nTraverse postorder");
+        bst.traverseOrder("postorder");
+
+        System.out.println("\n\nTraverse inorder");
+        bst.traverseOrder("inorder");
+
+        System.out.println("\n\nTraverse BFS");
+        bst.traverseOrder("bfs");
     }
 
     private static void initializeHashTable() {
