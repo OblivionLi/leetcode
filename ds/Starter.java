@@ -8,6 +8,8 @@ import ds.Queue.MyQueue;
 import ds.Stack.MyStack;
 import ds.Tree.MyAVLTree;
 import ds.Tree.MyBinarySearchTree;
+import ds.Tree.MyRedBlackTree;
+import ds.Tree.MyTrie;
 
 import java.util.Arrays;
 
@@ -41,9 +43,89 @@ public class Starter {
 //        initializeBST();
 //        System.out.println("\n------Finished initializing BST..");
 
-        System.out.println("------Initializing AVLTree..\n");
-        initializeAVLTree();
-        System.out.println("\n------Finished initializing AVLTree..");
+//        System.out.println("------Initializing AVLTree..\n");
+//        initializeAVLTree();
+//        System.out.println("\n------Finished initializing AVLTree..");
+
+//        System.out.println("------Initializing Trie..\n");
+//        initializeTrie();
+//        System.out.println("\n------Finished initializing Trie..");
+
+//        System.out.println("------Initializing Trie..\n");
+//        initializeTrie();
+//        System.out.println("\n------Finished initializing Trie..");
+
+        System.out.println("------Initializing RedBlackTree..\n");
+        initializeRedBlackTree();
+        System.out.println("\n------Finished initializing RedBlackTree..");
+    }
+
+    private static void initializeRedBlackTree() {
+        MyRedBlackTree rbt = new MyRedBlackTree();
+
+        rbt.insert(1);
+        rbt.insert(2);
+        rbt.insert(3);
+        rbt.insert(4);
+        rbt.insert(5);
+        rbt.insert(6);
+        rbt.insert(7);
+
+        // Print the tree
+        rbt.prettyPrint();
+
+        // Search for a value
+        MyRedBlackTree.Node node = rbt.searchTreeHelper(rbt.root, 3);
+        System.out.println("\nSearched node: " + node.data);
+
+        // Delete a value
+        System.out.println("Deleting node with value 2");
+        rbt.deleteNode(2);
+
+        // Print the tree after deletion
+        rbt.prettyPrint();
+    }
+
+    private static void initializeTrie() {
+        MyTrie trie = new MyTrie();
+
+        System.out.printf("Inserting the following values: %s, %s, %s, %s, %s, %s, %s\n", "apple", "app", "banana", "band", "dog", "dove", "duck");
+
+        // Test insert
+        trie.insert("apple");
+        trie.insert("app");
+        trie.insert("banana");
+        trie.insert("band");
+        trie.insert("dog");
+        trie.insert("dove");
+        trie.insert("duck");
+
+        // Test search
+        System.out.printf("Searching words: %s, %s, %s, %s, %s, %s\n", "apple", "app", "ban", "band", "do", "dove");
+        System.out.println(trie.search("apple"));  // should return true
+        System.out.println(trie.search("app"));    // should return true
+        System.out.println(trie.search("ban"));    // should return false
+        System.out.println(trie.search("band"));   // should return true
+        System.out.println(trie.search("do"));     // should return false
+        System.out.println(trie.search("dove"));   // should return true
+
+        // Print all words
+        System.out.println("\nAll current trie words:");
+        trie.printAllWords();
+
+        // Test startsWith
+        System.out.printf("\n\nCheck if words starts with: %s, %s, %s, %s:\n", "a", "ban", "d", "z");
+        System.out.println(trie.startsWith("a"));  // should return true
+        System.out.println(trie.startsWith("ban")); // should return true
+        System.out.println(trie.startsWith("d"));  // should return true
+        System.out.println(trie.startsWith("z"));  // should return false
+
+        // Test delete
+        System.out.printf("\nDeleting word %s", "apple");
+        trie.delete("apple");
+
+        System.out.printf("\n\nSearching for word %s\n", "apple");
+        System.out.println(trie.search("apple"));  // should return false
     }
 
     private static void initializeAVLTree() {
