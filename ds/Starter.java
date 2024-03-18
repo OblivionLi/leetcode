@@ -1,15 +1,13 @@
 package ds;
 
 import ds.ArrayList.MyArrayList;
+import ds.Heap.MyHeap;
 import ds.LinkedList.MyDoublyLL;
 import ds.LinkedList.MySinglyLL;
 import ds.MyHT.MyHT;
 import ds.Queue.MyQueue;
 import ds.Stack.MyStack;
-import ds.Tree.MyAVLTree;
-import ds.Tree.MyBinarySearchTree;
-import ds.Tree.MyRedBlackTree;
-import ds.Tree.MyTrie;
+import ds.Tree.*;
 
 import java.util.Arrays;
 
@@ -34,7 +32,7 @@ public class Starter {
 //        System.out.println("------Initializing ArrayList..\n");
 //        initializeArrayList();
 //        System.out.println("\n------Finished initializing ArrayList..");
-        
+
 //        System.out.println("------Initializing HashTable..\n");
 //        initializeHashTable();
 //        System.out.println("\n------Finished initializing HashTable..");
@@ -55,9 +53,107 @@ public class Starter {
 //        initializeTrie();
 //        System.out.println("\n------Finished initializing Trie..");
 
-        System.out.println("------Initializing RedBlackTree..\n");
-        initializeRedBlackTree();
-        System.out.println("\n------Finished initializing RedBlackTree..");
+//        System.out.println("------Initializing RedBlackTree..\n");
+//        initializeRedBlackTree();
+//        System.out.println("\n------Finished initializing RedBlackTree..");
+
+//        System.out.println("------Initializing BTree..\n");
+//        initializeBTree();
+//        System.out.println("\n------Finished initializing BTree..");
+
+        System.out.println("------Initializing Heap..\n");
+        initializeHeap();
+        System.out.println("\n------Finished initializing Heap..");
+    }
+
+    private static void initializeHeap() {
+        MyHeap maxHeap = new MyHeap(true);
+
+        System.out.println("Initializing Max Heap..\n");
+
+        // Test isEmpty() on an empty maxHeap
+        System.out.println("Is empty?: " + maxHeap.isEmpty()); // Should print: true
+
+        // Test insert()
+        maxHeap.insert(3);
+        maxHeap.insert(5);
+        maxHeap.insert(1);
+        maxHeap.insert(2);
+        maxHeap.insert(4);
+
+        // Test size()
+        System.out.println("Heap size: " + maxHeap.size());
+
+        // Test peek()
+        System.out.println("Peek: " + maxHeap.peek());
+
+        // Test remove()
+        System.out.println("Removed peek: " + maxHeap.remove());
+        System.out.println("New peek: " + maxHeap.peek());
+
+        // Test isEmpty() on a non-empty maxHeap
+        System.out.println("Is empty: " + maxHeap.isEmpty());
+
+        System.out.println("Print Max Heap structure:");
+        maxHeap.printStructure();
+
+        maxHeap.clear();
+
+        System.out.println("\n------\nInitializing Min Heap..\n");
+        MyHeap minHeap = new MyHeap(false);
+
+        // Test isEmpty() on an empty heap
+        System.out.println("Is empty?: " + minHeap.isEmpty()); // Should print: true
+
+        // Test insert()
+        minHeap.insert(3);
+        minHeap.insert(5);
+        minHeap.insert(1);
+        minHeap.insert(2);
+        minHeap.insert(4);
+
+        // Test size()
+        System.out.println("Heap size: " + minHeap.size()); // Should print: 5
+
+        // Test peek()
+        System.out.println("Peek: " + minHeap.peek()); // Should print: 5 (the maximum element)
+
+        // Test remove()
+        System.out.println("Removed peek: " + minHeap.remove()); // Should print: 5 (the maximum element)
+        System.out.println("New peek: " + minHeap.peek()); // Should print: 4 (the new maximum element)
+
+        // Test isEmpty() on a non-empty minHeap
+        System.out.println("Is empty: " + minHeap.isEmpty()); // Should print: false
+
+        System.out.println("Print Min Heap structure:");
+        minHeap.printStructure();
+
+        minHeap.clear();
+    }
+
+    private static void initializeBTree() {
+        // TODO:: The insert/put might not work as intended
+
+        MyBTree<Integer, String> bTree = new MyBTree<>();
+
+        bTree.put(5, "Five");
+        bTree.put(10, "Ten");
+        bTree.put(3, "Three");
+        bTree.put(7, "Seven");
+        bTree.put(12, "Twelve");
+        bTree.put(6, "Six");
+
+        System.out.println("Search for key 10: " + bTree.get(10));
+        System.out.println("Search for key 6: " + bTree.get(6));
+        System.out.println("Search for key 8: " + bTree.get(8));
+
+        // Test height and size
+        System.out.println("\nHeight of the B-tree: " + bTree.height());
+        System.out.println("Size of the B-tree: " + bTree.size());
+
+        // Test toString method
+        System.out.println("\nB-tree contents:");
+        System.out.println(bTree);
     }
 
     private static void initializeRedBlackTree() {
@@ -198,8 +294,8 @@ public class Starter {
         System.out.println("Get index 2 values: " + myHT.get(2));
         System.out.println("Remove index 1 value: " + myHT.remove(1));
         System.out.println("Get index 1 values: " + myHT.get(1));
-        System.out.println("\nContains key 2? "+ myHT.containsKey(2));
-        System.out.println("Contains key 9? "+ myHT.containsKey(9));
+        System.out.println("\nContains key 2? " + myHT.containsKey(2));
+        System.out.println("Contains key 9? " + myHT.containsKey(9));
         System.out.println("\nContains value 222? " + myHT.containsValue(222));
         System.out.println("Contains value 9999? " + myHT.containsValue(9999));
 
@@ -483,7 +579,6 @@ public class Starter {
 
         System.out.println("\nGet head value: " + singlyLL.getHead());
         System.out.println("\nGet tail value: " + singlyLL.getTail());
-
 
 
         System.out.println("Traversing the list");
