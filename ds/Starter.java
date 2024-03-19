@@ -8,6 +8,8 @@ import ds.MyHT.MyHT;
 import ds.Queue.MyQueue;
 import ds.Stack.MyStack;
 import ds.Tree.*;
+import ds.algos.SortingAndSearching;
+import ds.graph.MyGraph;
 
 import java.util.Arrays;
 
@@ -61,9 +63,113 @@ public class Starter {
 //        initializeBTree();
 //        System.out.println("\n------Finished initializing BTree..");
 
-        System.out.println("------Initializing Heap..\n");
-        initializeHeap();
-        System.out.println("\n------Finished initializing Heap..");
+//        System.out.println("------Initializing Heap..\n");
+//        initializeHeap();
+//        System.out.println("\n------Finished initializing Heap..");
+
+//        System.out.println("------Initializing Graph..\n");
+//        initializeGraph();
+//        System.out.println("\n------Finished initializing Graph..");
+
+        System.out.println("------Initializing Sorting and Searching algos..\n");
+        initializeSortingAndSearchingAlgos();
+        System.out.println("\n------Finished initializing Sorting and Searching algos..");
+    }
+
+    private static void initializeSortingAndSearchingAlgos() {
+        SortingAndSearching ss = new SortingAndSearching();
+        int[] nums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+
+        System.out.printf("Linear search value: %d in array %s exist? %b\n", 5, Arrays.toString(nums), ss.linearSearch(nums, 5));
+        System.out.printf("Linear search value: %d in array %s exist? %b\n", 999, Arrays.toString(nums), ss.linearSearch(nums, 999));
+
+        System.out.printf("\nBubble sort this array %s:", Arrays.toString(nums));
+        int[] bubbleSortedArray = ss.bubbleSort(nums);
+        System.out.printf("\nBubble sort array: %s\n", Arrays.toString(bubbleSortedArray));
+
+        int[] sNums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+        System.out.printf("\nSelection sort this array %s:", Arrays.toString(sNums));
+        int[] selectionSortedArray = ss.selectionSort(sNums);
+        System.out.printf("\nSelection sort array: %s\n", Arrays.toString(selectionSortedArray));
+
+        int[] iNums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+        System.out.printf("\nInsertion sort this array %s:", Arrays.toString(iNums));
+        int[] insertionSortedArray = ss.insertionSort(iNums);
+        System.out.printf("\nInsertion sort array: %s\n",Arrays.toString(insertionSortedArray));
+
+        int[] qNums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+        System.out.printf("\nQuick sort this array %s:", Arrays.toString(qNums));
+        int[] quickSortedArray = ss.quickSort(qNums, 0, qNums.length - 1);
+        System.out.printf("\nQuick sort array: %s\n",Arrays.toString(quickSortedArray));
+
+        int[] mNums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+        System.out.printf("\nMerge sort this array %s:", Arrays.toString(mNums));
+        int[] mergeSortedArray = ss.mergeSort(mNums, mNums.length);
+        System.out.printf("\nMerge sort array: %s\n", Arrays.toString(mergeSortedArray));
+
+        int[] hNums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+        System.out.printf("\nHeap sort this array %s:", Arrays.toString(hNums));
+        int[] heapSortedArray = ss.heapSort(hNums);
+        System.out.printf("\nHeap sorted array: %s\n", Arrays.toString(heapSortedArray));
+
+        int[] rNums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+        System.out.printf("\nRadix sort this array %s:", Arrays.toString(rNums));
+        int[] radixSortedArray = ss.radixSort(rNums);
+        System.out.printf("\nRadix sorted array: %s\n", Arrays.toString(radixSortedArray));
+
+        int[] bNums = {6, 4, 8, 1, 10, 5, 2, 9, 25, 0, 100, 3, 12};
+        System.out.printf("\nBucket sort this array %s:", Arrays.toString(bNums));
+        int[] bucketSortedArray = ss.bucketSort(bNums);
+        System.out.printf("\nBucket sorted array: %s\n", Arrays.toString(bucketSortedArray));
+
+        // Sorted using java internal sort algo to not interfere with the manual sorted algos from the SortingAndSearching.class
+        Arrays.sort(nums);
+
+        System.out.printf("\nBinary search value: %d in array %s exist? %b\n", 10, Arrays.toString(nums), ss.binarySearch(nums, 10));
+        System.out.printf("Binary search value: %d in array %s exist? %b\n", 999, Arrays.toString(nums), ss.binarySearch(nums, 999));
+
+        System.out.printf("\nJump search value: %d in array %s exist? %b\n", 8, Arrays.toString(nums), ss.jumpSearch(nums, 8));
+        System.out.printf("Jump search value: %d in array %s exist? %b\n", 999, Arrays.toString(nums), ss.jumpSearch(nums, 999));
+
+        System.out.printf("\nInterpolation search value: %d in array %s exist? %b\n", 8, Arrays.toString(nums), ss.interpolationSearch(nums, 8));
+        System.out.printf("Interpolation search value: %d in array %s exist? %b\n", 999, Arrays.toString(nums), ss.interpolationSearch(nums, 999));
+
+        System.out.printf("\nExponential search value: %d in array %s exist? %b\n", 8, Arrays.toString(nums), ss.exponentialSearch(nums, 12));
+        System.out.printf("Exponential search value: %d in array %s exist? %b\n", 999, Arrays.toString(nums), ss.exponentialSearch(nums, 999));
+
+        // For bfs and dfs check class -> MyBinarySearchTree.class at method traverseOrder()
+    }
+
+    private static void initializeGraph() {
+        MyGraph graph = new MyGraph(5);
+
+        // Test addEdge()
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(1, 2);
+        graph.addEdge(3, 4);
+
+        // Test getAdj()
+        System.out.println("Adjacency list of vertex 2: " + graph.getAdj(2));
+
+        // Test isConnected()
+        System.out.println("Is vertex 0 connected to vertex 1? " + graph.isConnected(0, 1));
+        System.out.println("Is vertex 0 connected to vertex 4? " + graph.isConnected(0, 4));
+
+        // Test degree()
+        System.out.println("Degree of vertex 0: " + graph.degree(0));
+
+        // Test getNumVertices()
+        System.out.println("Number of vertices: " + graph.getNumVertices());
+
+        // Test getNumEdges()
+        System.out.println("Number of edges: " + graph.getNumEdges());
+
+        // Test adj()
+        System.out.println("Vertices adjacent to vertex 0: ");
+        for (int w : graph.adj(0)) {
+            System.out.println(w);
+        }
     }
 
     private static void initializeHeap() {

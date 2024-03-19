@@ -19,7 +19,7 @@ public class MyHeap {
 
     private void heapifyUp(int index) {
         int parentIndex = (index - 1) / 2;
-        while (index > 0 && compare(elements.get(parentIndex), elements.get(index))) {
+        while (index > 0 && !compare(elements.get(parentIndex), elements.get(index))) {
             swap(parentIndex, index);
             index = parentIndex;
             parentIndex = (index - 1) / 2;
