@@ -176,7 +176,7 @@ public class SortingAndSearching {
 
     public int[] quickSort(int[] arr, int begin, int end) {
         if (begin < end) {
-            int partitionIndex = partition(arr, begin, end);
+            int partitionIndex = partitionUtil(arr, begin, end);
 
             quickSort(arr, begin, partitionIndex - 1);
             quickSort(arr, partitionIndex + 1, end);
@@ -195,12 +195,14 @@ public class SortingAndSearching {
         int[] right = new int[n - mid];
 
         System.arraycopy(arr, 0, left, 0, mid);
-        if (n - mid >= 0) System.arraycopy(arr, mid, right, 0, n - mid);
+        if (n - mid >= 0) {
+            System.arraycopy(arr, mid, right, 0, n - mid);
+        }
 
         mergeSort(left, mid);
         mergeSort(right, n - mid);
 
-        merge(arr, left, right, mid, n - mid);
+        mergeUtil(arr, left, right, mid, n - mid);
 
         return arr;
     }
@@ -227,7 +229,7 @@ public class SortingAndSearching {
         int max = Arrays.stream(arr).max().getAsInt();
 
         for (int exp = 1; max / exp > 0; exp *= 10) {
-            countingSort(arr, exp);
+            countingSortUtil(arr, exp);
         }
 
         return arr;
@@ -284,7 +286,7 @@ public class SortingAndSearching {
         return false;
     }
 
-    private void countingSort(int[] arr, int exp) {
+    private void countingSortUtil(int[] arr, int exp) {
         int n = arr.length;
         int[] output = new int[n];
         int[] count = new int[10];
@@ -305,7 +307,7 @@ public class SortingAndSearching {
         System.arraycopy(output, 0, arr, 0, n);
     }
 
-    private void merge(int[] arr, int[] leftArr, int[] rightArr, int left, int right) {
+    private void mergeUtil(int[] arr, int[] leftArr, int[] rightArr, int left, int right) {
         int i = 0, j = 0, k = 0;
 
         while (i < left && j < right) {
@@ -325,7 +327,7 @@ public class SortingAndSearching {
         }
     }
 
-    private int partition(int[] arr, int begin, int end) {
+    private int partitionUtil(int[] arr, int begin, int end) {
         int pivot = arr[end];
         int i = (begin - 1);
 
